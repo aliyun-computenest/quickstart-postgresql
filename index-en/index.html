@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="计算巢是阿里云开放给企业应用服务商的服务管理平台。服务商能够在计算巢上发布私有化部署服务，为其客户提供云上软件一键部署的能力；同时也支持全托管模式的服务，赋能服务商托管其客户资源。">
+  <title>PostgreSQL Service Instance Deployment Document - Aliyun 计算巢 x Demo</title>
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+  <link rel="stylesheet" href="../css/theme.css">
+  
+
+  
+
+  
+  
+
+  
+    <script src="../search/main.js"></script>
+  
+
+  
+
+  <script src="../js/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="nav-inner">
+        <div class="logo">
+          <img src="./img/logo-2x.png">
+        </div>
+        <div class="nav-list">
+          <ul>
+          
+              <li><a href="#postgresql-service-instance-deployment-document">PostgreSQL Service Instance Deployment Document</a></li>
+              
+                  <li><a href="#postgresql-introduction">PostgreSQL Introduction</a></li>
+                  
+              
+                  <li><a href="#billing-description">Billing Description</a></li>
+                  
+              
+                  <li><a href="#deployment-architecture">Deployment Architecture</a></li>
+                  
+              
+                  <li><a href="#required-permissions-for-ram-users">Required Permissions for RAM Users</a></li>
+                  
+              
+                  <li><a href="#deployment-process">Deployment process</a></li>
+                  
+                      <li class="li-h3"><a href="#deployment-steps">Deployment Steps</a></li>
+                  
+              
+          
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="content theme-github">
+      
+      <div class="content-inner">        
+        
+        <h1 id="postgresql-service-instance-deployment-document">PostgreSQL Service Instance Deployment Document</h1>
+<h2 id="postgresql-introduction">PostgreSQL Introduction</h2>
+<p>PostgreSQL is a very complete features of free software object-relational database management system (ORDBMS), is developed by the University of California Department of Computer Science POSTGRES,4.2 version of the object-based relational database management system. Many of POSTGRES leading concepts only appeared in the commercial website database at a relatively late stage. PostgreSQL supports most of the SQL standards and provides many other modern features, such as complex queries, foreign keys, triggers, views, transactional integrity, and multi-version concurrency control. Likewise, PostgreSQL can be extended in many ways, such as by adding new data types, functions, operators, aggregate functions, indexing methods, procedural languages, and so on. In addition, because of the flexibility of the license, anyone can use, modify and distribute the PostgreSQL for free for any purpose.</p>
+<h2 id="billing-description">Billing Description</h2>
+<p>PostgreSQL fees on Alibaba Cloud are mainly related:
+* Specifications of the selected CPU cloud server
+* Disk Capacity
+Billing method: pay by volume (hour) or package year and month
+The estimated cost is displayed in real time when you create an instance.</p>
+<h2 id="deployment-architecture">Deployment Architecture</h2>
+<p>The deployment architecture adopts ECS (cloud server) stand-alone deployment</p>
+<p><img alt="architecture_ecs_single.png" src="../images-en/architecture_ecs_single.png" /></p>
+<h2 id="required-permissions-for-ram-users">Required Permissions for RAM Users</h2>
+<table>
+<thead>
+<tr>
+<th>Permission policy name</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AliyunECSFullAccess</td>
+<td>Permissions to manage ECS instances</td>
+</tr>
+<tr>
+<td>AliyunVPCFullAccess</td>
+<td>Permissions to manage a VPC</td>
+</tr>
+<tr>
+<td>AliyunROSFullAccess</td>
+<td>Manage permissions for Resource Orchestration Service (ROS)</td>
+</tr>
+<tr>
+<td>AliyunComputeNestUserFullAccess</td>
+<td>Manage user-side permissions for the compute nest service (ComputeNest)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deployment-process">Deployment process</h2>
+<h3 id="deployment-steps">Deployment Steps</h3>
+<ol>
+<li>Click the deployment link to enter the service instance deployment interface, and fill in the parameters according to the interface prompts to complete the deployment.</li>
+<li>After completing the parameters, you can see the corresponding inquiry details. After confirming the parameters, click <strong>Next: Confirm Order</strong>
+! much)
+! much)</li>
+<li>Confirm the order and agree to the service agreement and click <strong>Create Now</strong></li>
+<li>After the deployment is completed, you can start using the service. Enter the service instance details and click Address to access.
+! much)</li>
+<li>Using the service, you can find the corresponding ecs login through resources, and then use the psql command to link to the database</li>
+</ol>
+<p><img alt="usage1.png" src="../images-en/usage1.png" />
+<img alt="usage2.png" src="../images-en/usage2.png" /></p>
+<p>Service deployment path is/root/application/postgresql use docker-compose deployment
+'''
+sudo su root
+systemctl status postgresql
+psql -h 127.0.0.1 -p 5432 -U pguser -d postgres
+'''
+<img alt="usage3.png" src="../images-en/usage3.png" /></p>
+        
+      </div>
+
+      <div class="copyrights">© 2009-2022 Aliyun.com 版权所有</div>
+    </div>
+  </div>
+  
+  <!--
+  MkDocs version      : 1.6.1
+  Docs Build Date UTC : 2026-03-23 08:29:53.655715+00:00
+  -->
+</body>
+</html>
